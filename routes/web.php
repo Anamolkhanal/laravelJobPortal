@@ -27,3 +27,6 @@ Route::post(
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
+
+Route::get('/jobs/{id}/{job}','App\Http\Controllers\JobController@show')->name('jobs.show');
+Route::get('/company/{id}/{company}','App\Http\Controllers\CompanyController@index')->name('company.index');

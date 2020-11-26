@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use App\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(CompanySeeder::class);
+        $this->call(JobsSeeder::class);
+        $this->call(UserSeeder::class);
+
+        $categories=[
+            'Government','NGO','Banking','software','Networking','2nd optionb'
+        ];
+        foreach ($categories as $category){
+            \App\Models\Category::create(['name'=>$category]);
+        }
     }
 }

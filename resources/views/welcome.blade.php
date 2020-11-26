@@ -1,9 +1,8 @@
-@extends('layouts.layouts')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
         <div class="row">
-        <h1>Recent Jobs</h1>
         <table class="table">
             <thead>
             <th>Company Logo</th>
@@ -33,4 +32,4 @@
         </table>
         </div>
     </div>
-@endsection
+    @endsection

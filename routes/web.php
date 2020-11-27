@@ -2,7 +2,7 @@
 
 // use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route; 
-//use App\Http\Controllers\HomeController; # don't forgot to add this
+use App\Http\Controllers\HomeController; # don't forgot to add this
 use App\Http\Controllers\JobController;
 Route::get('/', function () {
     return view('welcome');
@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/',[JobController::class, 'index']);
-//Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/jobs/{id}/{job}','App\Http\Controllers\JobController@show')->name('jobs.show');
 Route::get('/company/{id}/{company}','App\Http\Controllers\CompanyController@index')->name('company.index');

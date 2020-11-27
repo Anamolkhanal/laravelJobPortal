@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use \Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -36,5 +37,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    protected function authenticated(Request $request, $user)
+    {
+        dd(Auth::$user->user_type);
+        if (Auth::$user->user_type=="seeker") {
+            return redirect()->route('views.welcome');
+        } else if (Auth::$user->user_type=="employer") {
+            return redirect()->route('views.home');
+        }
     }
 }

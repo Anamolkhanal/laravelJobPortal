@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
         <table class="table">
+        <h1>Recents Jobs</h1>
             <thead>
             <th>Company Logo</th>
             <th>Position</th>

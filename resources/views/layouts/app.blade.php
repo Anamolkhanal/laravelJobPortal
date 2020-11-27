@@ -28,7 +28,7 @@
 </head>
 
 <body class="skin-blue sidebar-mini">
-@if (Auth::$user->user_type=="employer")
+@if (!Auth::guest() && Auth::user()->user_type == 'employer')
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
@@ -100,9 +100,8 @@
         <footer class="main-footer" style="max-height: 100px;text-align: center">
             <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
         </footer>
-
     </div>
-@elseif(Auth::$user->user_type=="seeker")
+    @elseif (!Auth::guest() && Auth::user()->user_type == 'seeker')
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -126,16 +125,14 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Recent jobs</a></li>
-                    <li><a href="{{ url('/') }}">Profile</a></li>
-                    <li><a href="{{ url('/') }}">Message</a></li>
+                    <li><a href="{{ url('/user/profile') }}">Profile</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    <li><a href="{{ url('/login') }}">Notification</a></li>
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a>Hello! {{Auth::user()->name}}</a></li>
+                    <li><a href="{{ route('logout') }}">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -150,8 +147,7 @@
             </div>
         </div>
     </div>
-
-    @else
+@else
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">

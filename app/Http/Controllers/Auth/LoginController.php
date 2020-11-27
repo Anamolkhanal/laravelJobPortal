@@ -40,11 +40,11 @@ class LoginController extends Controller
     }
     protected function authenticated(Request $request, $user)
     {
-        dd(Auth::$user->user_type);
-        if (Auth::$user->user_type=="seeker") {
-            return redirect()->route('views.welcome');
-        } else if (Auth::$user->user_type=="employer") {
-            return redirect()->route('views.home');
+        $user = Auth::user();
+        if ($user->user_type=="seeker") {
+            return redirect()->route('welcome');
+        } else if ($user->user_type=="employer") {
+            return redirect()->route('home');
         }
     }
 }

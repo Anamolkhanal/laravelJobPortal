@@ -4,15 +4,14 @@
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\HomeController; # don't forgot to add this
 use App\Http\Controllers\JobController;
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Auth::routes();
-Route::get('/',[JobController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/',[JobController::class, 'index'])->name('welcome');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/jobs/{id}/{job}','App\Http\Controllers\JobController@show')->name('jobs.show');
+Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
 Route::get('/company/{id}/{company}','App\Http\Controllers\CompanyController@index')->name('company.index');
 
 
@@ -31,6 +30,6 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
-Route::get('user/profile','App\Http\Controllers\USerProfileController@index');
+Route::get('user/profile','App\Http\Controllers\USerProfileController@index')->name('profile');
 Route::post('profile/store','App\Http\Controllers\USerProfileController@store')->name('profile.store');
 

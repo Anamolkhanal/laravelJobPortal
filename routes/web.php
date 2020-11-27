@@ -31,5 +31,9 @@ Route::post(
 )->name('io_generator_builder_generate_from_file');
 
 Route::get('user/profile','App\Http\Controllers\USerProfileController@index')->name('profile');
-Route::post('profile/store','App\Http\Controllers\USerProfileController@store')->name('profile.store');
+Route::post('profile/store','App\Http\Controllers\UserProfileController@store')->name('profile.store');
+Route::post('profile/coverletter','App\Http\Controllers\UserProfileController@coverletter')->name('profile.coverletter');
+Route::post('profile/resume','App\Http\Controllers\UserProfileController@resume')->name('profile.resume');
+Route::post('profile/avatar','App\Http\Controllers\UserProfileController@avatar')->name('profile.avatar');
 
+//Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout');

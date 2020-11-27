@@ -31,3 +31,6 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
+Route::get('user/profile','App\Http\Controllers\USerProfileController@index');
+Route::post('profile/store','App\Http\Controllers\USerProfileController@store')->name('profile.store');
+

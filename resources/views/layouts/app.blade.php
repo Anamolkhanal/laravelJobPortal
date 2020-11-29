@@ -152,7 +152,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Recent jobs</a></li>
-                    <li><a href="{{ url('/user/profile') }}">Profile</a></li>
+                    <li><a href="{{ route('profile') }}">Profile</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

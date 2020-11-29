@@ -10,7 +10,7 @@ use App\Http\Controllers\Storage;
 class UserProfileController extends Controller
 {
     public function index(){
-        return view('profiles.index',compact('users'));
+        return view('profiles.index');
     }
     public function store(Request $request){
         $this->validate($request,[

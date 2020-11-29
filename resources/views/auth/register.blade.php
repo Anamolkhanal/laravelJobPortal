@@ -34,7 +34,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>Jobs Portal</b></a>
+        <a href="{{ route('welcome') }}"><b>Jobs Portal</b></a>
     </div>
 
     <div class="register-box-body">

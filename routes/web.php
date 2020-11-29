@@ -4,7 +4,8 @@
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\HomeController; # don't forgot to add this
 use App\Http\Controllers\JobController;
-
+use App\Models\User;
+use App\Notifications\notify;
 // Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Auth::routes();
@@ -14,6 +15,14 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
 Route::get('/company/{id}/{company}','App\Http\Controllers\CompanyController@index')->name('company.index');
 
+Route::get('/ss',function(){
+$user=user::find(33);
+User::find(33)->notify(new notify);
+});
+Route::get('maskAsRead',function(){
+    Auth::user()->unreadNotifications->markAsRead();
+    return redirect()->back();
+})->name('markRead');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
@@ -36,4 +45,4 @@ Route::post('profile/coverletter','App\Http\Controllers\UserProfileController@co
 Route::post('profile/resume','App\Http\Controllers\UserProfileController@resume')->name('profile.resume');
 Route::post('profile/avatar','App\Http\Controllers\UserProfileController@avatar')->name('profile.avatar');
 
-//Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');

@@ -47,6 +47,33 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                        <!-- Notification Menu -->
+                        <li >
+                         <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell"></i>
+                            @if(Auth::user()->unreadNotifications->count())
+                            <span class="badge badge-light">{{Auth::user()->unreadNotifications->count()}}</span>
+                            @endif
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The notification list -->
+                                <li><a style="color: green" href="{{route('markRead')}}">Mark all as Read</a></li>
+                                @foreach(Auth::user()->unreadNotifications as $notification)
+                             
+                                <li >
+                                   <a style="background-color: lightgray" href="#">{{$notification->data['data']}}</a>
+                                </li>
+                                @endforeach
+                                @foreach(Auth::user()->readNotifications as $notification)
+                             
+                                <li >
+                                   <a href="#">{{$notification->data['data']}}</a>
+                                </li>
+                                @endforeach
+                            </ul> 
+                        </li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -98,7 +125,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Laravel project 2020, <a href="#">Job Portal</a>.</strong> All rights reserved.
         </footer>
     </div>
     @elseif (!Auth::guest() && Auth::user()->user_type == 'seeker')

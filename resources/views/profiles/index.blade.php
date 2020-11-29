@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-        @if(empty(Auth::user()->profile->avatar))
+        @if(empty(Auth::users()->profiles->avatar))
             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
             width="100" height="200">
         @else
         <img style="boarder-radius: 50px" 
-        src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
+        src="{{asset('uploads/avatar')}}/{{Auth::users()->profiles->avatar}}" 
             width="100" height="200">
         @endif
             
@@ -38,7 +38,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Address</label>
-                        <textarea class="from-control" rows="3" name="address">{{Auth::user()->profile->address}}</textarea>    
+                        <textarea class="from-control" rows="3" name="address">{{Auth::users()->profiles->address}}</textarea>    
                     </div>
                         @if($errors->has('address'))
                             <div class="error" style="color:red">
@@ -47,7 +47,7 @@
                         @endif
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input value="{{Auth::user()->profile->phone_number}}" type="number" class="from-control" name="phonenumber">    
+                        <input value="{{Auth::users()->profiles->phone_number}}" type="number" class="from-control" name="phonenumber">    
                     </div>
                     @if($errors->has('phone_number'))
                             <div class="error" style="color:red">
@@ -56,7 +56,7 @@
                         @endif
                     <div class="form-group">
                         <label>Experience</label>
-                        <textarea class="from-control" rows="3" name="experience">{{Auth::user()->profile->experience}}</textarea>    
+                        <textarea class="from-control" rows="3" name="experience">{{Auth::users()->profiles->experience}}</textarea>    
                     </div>
                     @if($errors->has('experience'))
                             <div class="error" style="color:red">

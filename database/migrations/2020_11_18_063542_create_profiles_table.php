@@ -16,14 +16,15 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function ($table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->text('address');
-            $table->string('gender');
-            $table->date('dob');
-            $table->text('experience');
-            $table->text('bio');
-            $table->text('cover_letter');
-            $table->string('resume');
-            $table->string('avatar');
+            $table->text('address')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->text('experience')->nullable();
+            $table->text('bio')->nullable();
+            $table->text('cover_letter')->nullable();
+            $table->string('resume')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

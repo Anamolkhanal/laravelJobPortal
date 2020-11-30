@@ -1,4 +1,4 @@
-@extends('layouts.layouts')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,11 +8,10 @@
             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
             width="100" height="200">
         @else
-        <img style="boarder-radius: 50px" 
-        src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
+            <img style="boarder-radius: 50px" 
+            src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
             width="100" height="200">
         @endif
-            
             <form action="{{route('profile.avatar')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card">
@@ -25,19 +24,38 @@
             </div>
             </form>
             @if($errors->has('avatar'))
-                            <div class="error" style="color:red">
-                            {{$errors->first('avatar')}}
-                            </div>     
-                        @endif
+                <div class="error" style="color:red">
+                    {{$errors->first('avatar')}}
+                </div>     
+            @endif
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">Update Your Information</div>
                 <div class="card-body">
                 <form action="{{route('profile.store')}}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Date of Birth: </label>
+                        <input id="dob" type="date" name="dob" class="form-control p_input" value="{{Auth::user()->profile->dob}}" required autocomplete="dob">
+                    </div>
+                        @if($errors->has('dob'))
+                            <div class="error" style="color:red">
+                            {{$errors->first('dob')}}
+                            </div>     
+                        @endif
+                    <div class="form-group">
+                        <label>Gender        : </label>
+                        <input type="radio" value="male" name="gender" <?php if(Auth::user()->profile->gender=="male"){echo"checked";} ?>>Male
+                        <input type="radio" value="female" name="gender" <?php if(Auth::user()->profile->gender=="Female"){ echo"checked";} ?>>Female
+                    </div>
+                        @if($errors->has('gender'))
+                            <div class="error" style="color:red">
+                            {{$errors->first('gender')}}
+                            </div>     
+                        @endif
+                    <div class="form-group">
+                        <label>Address       : </label>
                         <textarea class="from-control" rows="3" name="address">{{Auth::user()->profile->address}}</textarea>    
                     </div>
                         @if($errors->has('address'))
@@ -46,7 +64,7 @@
                             </div>     
                         @endif
                     <div class="form-group">
-                        <label>Phone Number</label>
+                        <label>Phone Number  : </label>
                         <input value="{{Auth::user()->profile->phone_number}}" type="number" class="from-control" name="phonenumber">    
                     </div>
                     @if($errors->has('phone_number'))
@@ -55,7 +73,7 @@
                             </div>     
                         @endif
                     <div class="form-group">
-                        <label>Experience</label>
+                        <label>Experience    : </label>
                         <textarea class="from-control" rows="3" name="experience">{{Auth::user()->profile->experience}}</textarea>    
                     </div>
                     @if($errors->has('experience'))
@@ -64,16 +82,15 @@
                             </div>     
                         @endif
                     <div class="form-group">
-                        <label>Biodata</label>
+                        <label>Biodata       : </label>
                         <textarea class="from-control" rows="3" name="bio">{{Auth::user()->profile->bio}}</textarea>    
                     </div>
                     @if($errors->has('bio'))
                             <div class="error" style="color:red">
                             {{$errors->first('bio')}}
                             </div>     
-                        @endif
-                   
-                    <div class="form-group">
+                    @endif
+                   <div class="form-group">
                         <button class="btn btn-success">Submit</button>
                     </div>
                         @if(Session::has('message'))
@@ -83,14 +100,17 @@
                         @endif
                 </form>
                 </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
+            <div class="col-md-4">
             <div class="card">
-                <div class="card-header">User Details </div> 
+                <div class="card-header">User Details 
+                </div> 
                 <div class="card-body">
                     <p><b>Name: {{Auth::user()->name}}</b></p>
                     <p><b>Email: {{Auth::user()->email}}</b></p>
+                    <p><b>Gender: {{Auth::user()->profile->gender}}</b></p>
+                    <p><b>Date of birth: {{Auth::user()->profile->dob}}</b></p>
                     <p><b>Address: {{Auth::user()->profile->address}}</b></p>
                     <p><b>Phone Number: {{Auth::user()->profile->phone_number}}</b></p>
                     <p><b>Experience: {{Auth::user()->profile->experience}}</b></p>
@@ -114,7 +134,6 @@
 
                 </div>
             </div>
-            
             <form action="{{route('profile.coverletter')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card">

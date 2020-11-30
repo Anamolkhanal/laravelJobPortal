@@ -73,19 +73,23 @@ class RegisterController extends Controller
         ]);
         if($data['user_type']=='seeker')
         {
+            // dd($data['user_type']);//data have passed upto here.
+           
             \App\Models\Profile::Create([
-                'user_id'=>$user->id,
-            ]);   
+                'user_id'=>$user->id
+            ]); 
             }
         elseif($data['user_type']=='employer')
             {
+               // dd($user->id);
                 \App\Models\Company::Create([
                     'user_id'=>$user->id,
-                    'cname'=>$data['name']
-                ]);   
-                }
+                    'cname'=>$data['name'],
+                ]); 
+           
+            }
         
-        return;
+            return redirect('login');
     }
 
 }

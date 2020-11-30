@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\HomeController; # don't forgot to add this
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CompanyController;
 use App\Models\User;
 use App\Notifications\notify;
 // Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
@@ -13,7 +16,7 @@ Route::get('/',[JobController::class, 'index'])->name('welcome');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
-Route::get('/company/{id}/{company}','App\Http\Controllers\CompanyController@index')->name('company.index');
+Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
 
 Route::get('/ss',function(){
 $user=user::find(33);
@@ -39,10 +42,10 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
-Route::get('user/profile','App\Http\Controllers\USerProfileController@index')->name('profile');
-Route::post('profile/store','App\Http\Controllers\UserProfileController@store')->name('profile.store');
-Route::post('profile/coverletter','App\Http\Controllers\UserProfileController@coverletter')->name('profile.coverletter');
-Route::post('profile/resume','App\Http\Controllers\UserProfileController@resume')->name('profile.resume');
-Route::post('profile/avatar','App\Http\Controllers\UserProfileController@avatar')->name('profile.avatar');
+Route::get('user/profile',[UserProfileController::class,'index'])->name('profile');
+Route::post('profile/store',[UserProfileController::class,'store'])->name('profile.store');
+Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])->name('profile.coverletter');
+Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
+Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
 
-Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('/logout', [LoginController::class,'logout'])->name('logout');

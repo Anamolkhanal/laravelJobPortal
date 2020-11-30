@@ -13,16 +13,20 @@ class UserProfileController extends Controller
         return view('profiles.index');
     }
     public function store(Request $request){
-        $this->validate($request,[
-            'address'=>'required',
-            'phone_number'=>'required|min:10|numeric',
-            'experience'=>'required|min:20',
-            'bio'=>'required|min:20',
-            ]);
-        
+        // $this->validate($request,[
+        //     'dob'=>'required',
+        //     'gender'=>'required',
+        //     'address'=>'required',
+        //     'phone_number'=>'required|min:10|numeric',
+        //     'experience'=>'required|min:20',
+        //     'bio'=>'required|min:20'
+        //     ]);
+        //dd(request('address'));
         $user_id=Auth::user()->id; 
-
+        
         Profile::where('user_id',$user_id)->update([
+            'dob'=>request('dob'),
+            'gender'=>request('gender'),
             'address'=>request('address'),
             'phone_number'=>request('phonenumber'),
             'experience'=>request('experience'),

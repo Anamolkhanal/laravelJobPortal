@@ -48,4 +48,9 @@ Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])-
 Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
 
-Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+Route::get('company/profile',[CompanyController::class,'profile'])->name('company.profile');
+Route::post('company/store',[CompanyController::class,'store'])->name('company.store');
+Route::post('company/coverphoto',[CompanyController::class,'coverphoto'])->name('company.coverphoto');
+Route::post('company/logo',[CompanyController::class,'logo'])->name('company.logo');
+
+Route::get('/logout', [LoginController::class,'logout'])->name('logout'); 

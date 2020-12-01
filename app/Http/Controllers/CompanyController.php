@@ -11,6 +11,7 @@ class CompanyController extends Controller
     public function index($id,Company $company){
         return view('company.index',compact('company')); 
     }
+<<<<<<< HEAD
     public function profile(){
         return view('company.profile');
     }
@@ -57,5 +58,12 @@ class CompanyController extends Controller
         with('message','Company Logo Update SuccessFully'); 
       }
     }
+=======
+
+    public function dashboard(){
+        return view('company.dashboard');
+    }
+
+>>>>>>> 3a2c39a6706f8281376a9b30e404938e890c2360
 }
  

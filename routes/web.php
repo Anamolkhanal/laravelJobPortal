@@ -16,7 +16,13 @@ Route::get('/',[JobController::class, 'index'])->name('welcome');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
+Route::get('/jobs/create',[JobController::class,'create'])->name('jobs.create');
+Route::post('/jobs/store',[JobController::class,'store'])->name('jobs.store');
+Route::get('/jobs/edit',[JobController::class,'edit'])->name('jobs.edit');
+
+
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
+// Route::get('/home',[CompanyController::class,'dashboard'])->name('company.dashboard');
 
 Route::get('/ss',function(){
 $user=user::find(33);
@@ -48,9 +54,14 @@ Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])-
 Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
 
+<<<<<<< HEAD
 Route::get('company/profile',[CompanyController::class,'profile'])->name('company.profile');
 Route::post('company/store',[CompanyController::class,'store'])->name('company.store');
 Route::post('company/coverphoto',[CompanyController::class,'coverphoto'])->name('company.coverphoto');
 Route::post('company/logo',[CompanyController::class,'logo'])->name('company.logo');
 
 Route::get('/logout', [LoginController::class,'logout'])->name('logout'); 
+=======
+
+Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+>>>>>>> 3a2c39a6706f8281376a9b30e404938e890c2360

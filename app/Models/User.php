@@ -46,8 +46,13 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne('App\Models\Profile'); 
     }
+<<<<<<< HEAD
     public function company(){
         return $this->hasOne('App\Models\Company'); 
+=======
+    public function jobs(){
+        return $this->hasMany('App\Models\Jobs'); 
+>>>>>>> 3a2c39a6706f8281376a9b30e404938e890c2360
     }
     
 }

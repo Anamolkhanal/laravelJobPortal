@@ -34,7 +34,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="{{route('home')}}" class="logo">
                 <b>Job Portal</b>
             </a>
 

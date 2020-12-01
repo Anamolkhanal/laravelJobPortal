@@ -33,4 +33,7 @@
         </table>
         </div>
     </div>
+    <span>
+        {{$jobs->links()}}
+    </span>
     @endsection

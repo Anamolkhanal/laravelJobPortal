@@ -16,7 +16,13 @@ Route::get('/',[JobController::class, 'index'])->name('welcome');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
+Route::get('/jobs/create',[JobController::class,'create'])->name('jobs.create');
+Route::post('/jobs/store',[JobController::class,'store'])->name('jobs.store');
+Route::get('/jobs/edit',[JobController::class,'edit'])->name('jobs.edit');
+
+
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
+// Route::get('/home',[CompanyController::class,'dashboard'])->name('company.dashboard');
 
 Route::get('/ss',function(){
 $user=user::find(33);
@@ -47,5 +53,6 @@ Route::post('profile/store',[UserProfileController::class,'store'])->name('profi
 Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])->name('profile.coverletter');
 Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
+
 
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');

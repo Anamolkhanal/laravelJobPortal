@@ -17,6 +17,7 @@ class Company extends Model
         'email',
         'password',
         'user_type',
+        'position',
     ];
     public function jobs(){
         return $this->hasMany('App\Models\Jobs'); 

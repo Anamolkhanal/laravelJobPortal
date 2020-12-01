@@ -1,12 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-
-
-    </div>
-</div>
+<table class="table">
+            <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            </thead>
+            <tbody>
+            @foreach(Auth::user()->company->jobs as $job)
+                <tr>
+                    <td><img src ="{{asset('avatar/apple.png')}}" width="80"></td>
+                    <td>
+                        {{$job->position}}
+                        <br>{{$job->type}}
+                    </td>
+                    <td>{{$job->address}}</td>
+                    <td>{{$job->created_at->diffForHumans()}}</td>
+                    <td>
+                    <a href="{{route('jobs.edit')}}">
+                        <button class ="btn btn-success btn-sm">Edit</button>
+                    </a>  
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
 @endsection
-
-

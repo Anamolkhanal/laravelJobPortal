@@ -46,5 +46,8 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne('App\Models\Profile'); 
     }
+    public function jobs(){
+        return $this->hasMany('App\Models\Jobs'); 
+    }
     
 }

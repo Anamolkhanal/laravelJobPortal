@@ -60,7 +60,7 @@ class JobController extends Controller
         $seeker_name=$req->seeker;
         $job_title=$req->job;
     
-        User::find($company_id)->notify(new notify);
+        User::find($company_id)->notify(new notify($job_title));
 
            return redirect()->back()
             ->with('message','You have Successfully applied for this Job.');

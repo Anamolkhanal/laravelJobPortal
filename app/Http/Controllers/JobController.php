@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\notify;
+use App\Http\Controllers\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Jobs;
-use App\Http\Controllers\notify;
-use App\Http\Controllers\User;
+
 use Auth;
 
 class JobController extends Controller

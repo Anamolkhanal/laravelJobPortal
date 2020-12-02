@@ -9,28 +9,26 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Models\User;
 use App\Notifications\notify;
+use Auth;
 // Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Auth::routes();
 Route::get('/',[JobController::class, 'index'])->name('welcome');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/jobs/apply',[JobController::class,'apply'])->name('jobs.apply');
-Route::get('/jobs/delete/{id}',[JobController::class,'delete'])->name('jobs.delete');
-Route::get('/jobs/edit/{id}',[JobController::class,'edit'])->name('jobs.edit');
 Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
 Route::get('/jobs/create',[JobController::class,'create'])->name('jobs.create');
 Route::post('/jobs/store',[JobController::class,'store'])->name('jobs.store');
+Route::get('/jobs/edit',[JobController::class,'edit'])->name('jobs.edit');
 
 
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
 // Route::get('/home',[CompanyController::class,'dashboard'])->name('company.dashboard');
 
-// Route::get('/ss',function(){
-// $user=user::find(33);
-// User::find(33)->notify(new notify);
-// });
-
+Route::get('/ss',function(){
+$user=user::find(33);
+User::find(33)->notify(new notify);
+});
 Route::get('maskAsRead',function(){
     Auth::user()->unreadNotifications->markAsRead();
     return redirect()->back();

@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\notify;
-use App\Http\Controllers\User;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\notify;
+use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Jobs;
 
-use Auth;
 
 class JobController extends Controller
 {
@@ -61,7 +61,9 @@ class JobController extends Controller
         $job_title=$req->job;
     
         User::find($company_id)->notify(new notify);
-         
+
+           return redirect()->back()
+            ->with('message','You have Successfully applied for this Job.');
 
     }
 

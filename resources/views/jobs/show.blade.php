@@ -17,6 +17,16 @@
                     </p>
                 </div>
                 </div>
+            <div class="form-group">
+                @php
+                    $company_id = $job->company->user_id;
+                    $seeker_id=Auth::user()->id;
+                    $job_id=$job->id;
+                @endphp
+                <a href="{{route('jobs.apply')."?company=$company_id&seeker=$seeker_id&job=$job_id"}}">
+                    <button class ="btn btn-success btn-sm">Apply for Job</button>
+                </a>  
+            </div>    
             </div>
             <div class="col-md-4">
                 <div class="card">

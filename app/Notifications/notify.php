@@ -58,4 +58,13 @@ class notify extends Notification
             'data'=>'this is my 1st notification'
         ];
     }
+    // public function toArray($notifiable)
+    // {
+    //     $seeker="";
+    //     $job_title="";
+    //     return [
+    //         $seeker=>'Apply for the '.$job_title
+    //     ];
+    // }
+}
 }

@@ -47,9 +47,7 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                    <li >
-                        <a href="{{route('company.profile')}}" class="btn btn-default btn-flat">Profile</a>
-                    </li>
+                    
                         <!-- Notification Menu -->
                         <li >
                          <li class="dropdown user user-menu">

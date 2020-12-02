@@ -17,12 +17,9 @@ class Company extends Model
         'cname',
         'email',
         'password',
-<<<<<<< HEAD
         'address',
-=======
         'user_type',
         'position',
->>>>>>> 3a2c39a6706f8281376a9b30e404938e890c2360
     ];
     public function jobs(){
         return $this->hasMany('App\Models\Jobs'); 

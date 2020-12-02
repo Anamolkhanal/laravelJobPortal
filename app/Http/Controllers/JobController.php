@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
-use App\Models\Jobs;;
+use App\Models\Jobs;
+use App\Http\Controllers\notify;
+use App\Http\Controllers\User;
 use Auth;
 
 class JobController extends Controller
@@ -41,11 +43,25 @@ class JobController extends Controller
 
         ]);
         return redirect()->back()
-            ->with('message','Job Pted Successfully');
+            ->with('message','Job Post Successfully');
     }
-    public function edit(){
+    public function edit($id){
+        $job= Jobs::find($id);
+        return view('jobs.edit', compact('job'));
+    }
+    public function delete($id){
+        $job= Jobs::find($id)->delete();
+        return redirect()->back()
+            ->with('message','Job Post Delete Successfully');
+    }
+    public function apply(Request $req ){
+        $company_id=$req->company;
+        $seeker_name=$req->seeker;
+        $job_title=$req->job;
+    
+        User::find($company_id)->notify(new notify);
+         
 
-        return view('jobs.edit');
     }
 
 }

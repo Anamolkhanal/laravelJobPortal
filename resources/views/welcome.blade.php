@@ -4,6 +4,22 @@
     <div class="container">
         <div class="row">
         <table class="table">
+            <form action="#" method="GET" style="margin-top: 20px;">
+                <select name="job_id" id="input_title">
+                    <option value="0">Select Job Title</option>
+                </select>
+                <select name="job_address" id="input_address">
+                    <option value="0">Select Address</option>
+                </select>
+                <select name="job_category" id="input_category">      
+                    <option value="0">Select Category</option>
+                </select>
+                <select name="job_type" id="input_type">
+                    <option value="0">Select Category</option>
+                </select>
+            
+                <input type="submit" class="btn btn-danger btn-sm" value="Search">
+            </form>
         <h1>Recents Jobs</h1>
             <thead>
             <th>Company Logo</th>

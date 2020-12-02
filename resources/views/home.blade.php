@@ -20,9 +20,12 @@
                     <td>{{$job->address}}</td>
                     <td>{{$job->created_at->diffForHumans()}}</td>
                     <td>
-                    <a href="{{route('jobs.edit')}}">
+                    <a href="{{route('jobs.edit',[$job->id])}}">
                         <button class ="btn btn-success btn-sm">Edit</button>
-                    </a>  
+                    </a> 
+                    <a href="{{route('jobs.delete',[$job->id])}}">
+                        <button class ="btn btn-success btn-sm">Delete</button>
+                    </a> 
                     </td>
                 </tr>
             @endforeach

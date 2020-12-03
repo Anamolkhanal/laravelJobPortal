@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Company'); 
     }
     public function jobs(){
-        return $this->hasMany('App\Models\Jobs'); 
+        return $this->belongsToMany('App\Models\Job'); 
     }
     
 }

@@ -10,7 +10,7 @@
             <th></th>
             </thead>
             <tbody>
-            @foreach(Auth::user()->jobs as $job)
+            @foreach(Auth::user()->company->jobs as $job)
                 <tr>
                     <td><img src ="{{asset('avatar/apple.png')}}" width="80"></td>
                     <td>

@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 
 class notify extends Notification
 {
-    public $job_id;
+    public $job_title, $seeker_name;
     use Queueable;
     
     /**
@@ -17,9 +17,10 @@ class notify extends Notification
      *
      * @return void
      */
-    public function __construct($job_id)
+    public function __construct($job_title,$seeker_name)
     {
-        $this->job_id = $job_id;
+        $this->job_title = $job_title;
+        $this->seeker_name =$seeker_name; 
     }
 
     /**
@@ -55,9 +56,11 @@ class notify extends Notification
      */
     public function toArray($notifiable)
     {
+        
+        $job_title=$this->job_title;
+        $seeker_name=$this->seeker_name; 
         return [
-            'data'=>'this is my 1st notification',
-            'job_id' => $this->job_id
+            'data'=>$seeker_name." applied for the ".$job_title,
         ];
     }
 }

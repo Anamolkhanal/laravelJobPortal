@@ -21,14 +21,11 @@ Route::get('/jobs/{id}/{job}',[JobController::class,'show'])->name('jobs.show');
 Route::get('/jobs/create',[JobController::class,'create'])->name('jobs.create');
 Route::post('/jobs/store',[JobController::class,'store'])->name('jobs.store');
 Route::get('/jobs/apply',[JobController::class,'apply'])->name('jobs.apply');
+Route::get('/jobs/cancel',[JobController::class,'cancel'])->name('jobs.cancel');
 
 
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
 
-// Route::get('/ss',function(){
-// $user=user::find(33);
-// User::find(33)->notify(new notify);
-// });
 Route::get('maskAsRead',function(){
     Auth::user()->unreadNotifications->markAsRead();
     return redirect()->back();

@@ -4,23 +4,32 @@
     <div class="container">
         <div class="row">
         <table class="table">
-            <form action="#" method="GET" style="margin-top: 20px;">
-                <select name="job_id" id="input_title">
-                    <option value="0">Select Job Title</option>
-                </select>
-                <select name="job_address" id="input_address">
-                    <option value="0">Select Address</option>
-                </select>
-                <select name="job_category" id="input_category">      
-                    <option value="0">Select Category</option>
-                </select>
-                <select name="job_type" id="input_type">
-                    <option value="0">Select Category</option>
-                </select>
-            
-                <input type="submit" class="btn btn-danger btn-sm" value="Search">
-            </form>
-        <h1>Recents Jobs</h1>
+        <!-- The form -->
+        <form class="container" action="#">
+        <input  style="padding: 10px;
+        font-size: 13px;
+        border: 1px solid grey;
+        float: left;
+        width: 25%;
+        background: #f1f1f1;
+        margin:20px;" type="text" placeholder="Search Job by Title, Category, Type.." name="search">
+        
+        <input  style="padding: 10px;
+         font-size: 13px;
+         border: 1px solid grey;
+         float: left;
+         width: 25%;
+         background: #f1f1f1;
+         margin:20px;" type="text" placeholder="Location.." name="search_location">
+        
+        <button style=" float: left;
+        width: 20%;
+        padding: 10px;
+        margin:20px;"
+        class ="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <br><br><br><br>
+        <h1>Recents Job</h1>
             <thead>
             <th>Company Logo</th>
             <th>Position</th>
@@ -40,7 +49,7 @@
                     <td>{{$job->created_at->diffForHumans()}}</td>
                     <td>
                     <a href="{{route('jobs.show',[$job->id,$job->roles])}}">
-                        <button class ="btn btn-success btn-sm">Apply</button>
+                        <button class ="btn btn-success btn-sm">View More</button>
                     </a>  
                     </td>
                 </tr>

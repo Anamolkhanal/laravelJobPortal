@@ -62,7 +62,7 @@
                                 <input type="date" name="last_date" class="from-control">
                             </div>
                             <div class="form-group">
-                               <button class="btn btn-outline-primary">Submit</button>
+                               <button class="btn btn-success">Job Post</button>
                             </div>
                         </form>
                         </div>

@@ -145,7 +145,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Jobs Portal
+                    Job Portal
                 </a>
             </div>
 
@@ -191,7 +191,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Jobs Portal
+                    Job Portal
                 </a>
             </div>
 

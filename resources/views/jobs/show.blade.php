@@ -43,7 +43,7 @@
                 </div>
                 @else
                 <div class="form-group">
-                <a href="{{route('login')}}" class ="btn btn-success btn-sm" >
+                <a href="{{route('login')}}" class ="btn btn-success" >
                         Login To Apply
                     </a>
                 </div>

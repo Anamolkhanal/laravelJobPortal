@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
+            <h1>Profile</h1><br>
         @if(empty(Auth::user()->profile->avatar))
             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
             width="100" height="200">

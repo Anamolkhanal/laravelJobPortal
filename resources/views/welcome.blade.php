@@ -40,7 +40,16 @@
             <tbody>
             @foreach($jobs as $job)
                 <tr>
-                    <td><img src ="{{asset('avatar/apple.png')}}" width="80"></td>
+                    <td>
+                        @if(empty(Auth::user()->profile->avatar))
+                            <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
+                            width="100" height="200">
+                        @else
+                            <img style="boarder-radius: 50px" 
+                            src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
+                            width="100" height="200">
+                        @endif
+                    </td>
                     <td>
                         {{$job->position}}
                         <br>{{$job->type}}

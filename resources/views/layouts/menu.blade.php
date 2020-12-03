@@ -4,5 +4,7 @@
 <li >
      <a href="{{route('company.profile')}}"><i class="fa fa-post-o"></i><span>Profile</span></a>
 </li>
-
+<li >
+        <a href="#"><i class="fa fa-post-o"></i><span>Total Application</span></a>
+</li>
 <!-- {{ Request::is('news*') ? 'active' : '' }} -->

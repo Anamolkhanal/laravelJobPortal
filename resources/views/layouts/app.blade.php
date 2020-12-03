@@ -97,9 +97,6 @@
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -154,6 +151,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Recent jobs</a></li>
                     <li><a href="{{ route('profile') }}">Profile</a></li>
+                    <li><a href="#">My Application</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -172,7 +172,7 @@
                                    <a href="#">{{$notification->data['data']}}</a>
                                 </li>
                                 @endforeach
-                                <li><a style="color: green" href="#">Delete All Notification</a></li>
+                                <li><a style="color: red" href="#">Delete All Notification</a></li>
                             </ul> 
                         </li>
                         <!-- User Account Menu -->

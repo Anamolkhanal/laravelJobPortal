@@ -24,6 +24,7 @@ Route::get('/jobs/apply',[JobController::class,'apply'])->name('jobs.apply');
 Route::get('/jobs/cancel',[JobController::class,'cancel'])->name('jobs.cancel');
 
 
+Route::get('/company/notify/applicant',[CompanyController::class,'applicant'])->name('company.applicant');
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
 
 Route::get('maskAsRead',function(){

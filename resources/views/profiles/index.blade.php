@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-3">
             <h1>Profile</h1><br>
-        @if(empty(Auth::user()->profile->avatar))
-            <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
-            width="100" height="200">
-        @else
-            <img style="boarder-radius: 50px" 
-            src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
-            width="100" height="200">
-        @endif
+            @if(empty(Auth::user()->profile->avatar))
+                <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
+                width="100" height="200">
+            @else
+                <img style="boarder-radius: 50px" 
+                src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
+                width="100" height="200">
+            @endif
             <form action="{{route('profile.avatar')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card">
@@ -57,7 +57,7 @@
                         @endif
                     <div class="form-group">
                         <label>Address       : </label>
-                        <textarea class="from-control" rows="3" name="address">{{Auth::user()->profile->address}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="address">{{Auth::user()->profile->address}}</textarea>    
                     </div>
                         @if($errors->has('address'))
                             <div class="error" style="color:red">
@@ -66,7 +66,7 @@
                         @endif
                     <div class="form-group">
                         <label>Phone Number  : </label>
-                        <input value="{{Auth::user()->profile->phone_number}}" type="number" class="from-control" name="phonenumber">    
+                        <input value="{{Auth::user()->profile->phone_number}}" type="number" class="form-control p_input" name="phonenumber">    
                     </div>
                     @if($errors->has('phone_number'))
                             <div class="error" style="color:red">
@@ -75,7 +75,7 @@
                         @endif
                     <div class="form-group">
                         <label>Experience    : </label>
-                        <textarea class="from-control" rows="3" name="experience">{{Auth::user()->profile->experience}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="experience">{{Auth::user()->profile->experience}}</textarea>    
                     </div>
                     @if($errors->has('experience'))
                             <div class="error" style="color:red">
@@ -84,7 +84,7 @@
                         @endif
                     <div class="form-group">
                         <label>Biodata       : </label>
-                        <textarea class="from-control" rows="3" name="bio">{{Auth::user()->profile->bio}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="bio">{{Auth::user()->profile->bio}}</textarea>    
                     </div>
                     @if($errors->has('bio'))
                             <div class="error" style="color:red">
@@ -101,9 +101,9 @@
                         @endif
                 </form>
                 </div>
-                </div>
             </div>
-            <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">User Details 
                 </div> 
@@ -134,8 +134,8 @@
                     @endif
 
                 </div>
-            </div>
-            <form action="{{route('profile.coverletter')}}" method="post" enctype="multipart/form-data">
+        </div>
+        <form action="{{route('profile.coverletter')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <div class="card-header">Update Cover Letter</div>
@@ -146,13 +146,13 @@
 
                 </div>
             </div>
-            </form>
-            @if($errors->has('cover_letter'))
-                            <div class="error" style="color:red">
-                            {{$errors->first('cover_letter')}}
-                            </div>     
-                        @endif
-            <form action="{{route('profile.resume')}}" method="post" enctype="multipart/form-data">
+        </form>	
+        @if($errors->has('cover_letter'))
+                        <div class="error" style="color:red">
+                        {{$errors->first('cover_letter')}}
+                        </div>     
+                    @endif
+        <form action="{{route('profile.resume')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <div class="card-header">Update Resume</div>
@@ -162,12 +162,12 @@
                     <button class="btn btn-primary">Update</button>
                 </div>
             </div>
-            </form>
-            @if($errors->has('resume'))
-                            <div class="error" style="color:red">
-                            {{$errors->first('resume')}}
-                            </div>     
-                        @endif
+        </form>
+        @if($errors->has('resume'))
+                        <div class="error" style="color:red">
+                        {{$errors->first('resume')}}
+                        </div>     
+                    @endif
         </div>
     </div>
 </div>

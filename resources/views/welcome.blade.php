@@ -12,20 +12,29 @@
         float: left;
         width: 25%;
         background: #f1f1f1;
-        margin:20px;" type="text" placeholder="Search Job by Title, Category, Type.." name="search">
+        margin:10px;" type="text" placeholder="Search Job by Title, Position, Type.." name="attribute">
         
+        {{-- <input  style="padding: 10px;
+         font-size: 13px;
+         border: 1px solid grey;
+         float: left;
+         width: 25%;
+         background: #f1f1f1;
+         margin:10px;" type="text" placeholder="Category" name="category"> --}}
+        
+
         <input  style="padding: 10px;
          font-size: 13px;
          border: 1px solid grey;
          float: left;
          width: 25%;
          background: #f1f1f1;
-         margin:20px;" type="text" placeholder="Location.." name="search_location">
+         margin:10px;" type="text" placeholder="Location.." name="location">
         
         <button style=" float: left;
-        width: 20%;
+        width: 10%;
         padding: 10px;
-        margin:20px;"
+        margin:10px;"
         class ="btn btn-success btn-sm" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <br><br><br><br>
@@ -41,13 +50,13 @@
             @foreach($jobs as $job)
                 <tr>
                     <td>
-                        @if(empty(Auth::user()->profile->avatar))
+                        @if(empty($job->company->logo))
                             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
-                            width="100" height="200">
+                            width="100" height="100">
                         @else
                             <img style="boarder-radius: 50px" 
-                            src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
-                            width="100" height="200">
+                            src="{{asset('uploads/avatar')}}/{{$job->company->logo}}" 
+                            width="100" height="100">
                         @endif
                     </td>
                     <td>

@@ -6,11 +6,11 @@
         <div class="col-md-3">
         @if(empty(Auth::user()->company->logo))
             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
-            width="100" height="200">
+            width="100" height="100">
         @else
             <img style="boarder-radius: 50px" 
             src="{{asset('uploads/avatar')}}/{{Auth::user()->company->logo}}" 
-            width="100" height="200">
+            width="100" height="100">
         @endif
             <form action="{{route('company.logo')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -37,7 +37,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Address       : </label>
-                        <textarea class="from-control" rows="3" name="address">{{Auth::user()->company->address}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="address">{{Auth::user()->company->address}}</textarea>    
                     </div>
                         @if($errors->has('address'))
                             <div class="error" style="color:red">
@@ -46,7 +46,7 @@
                         @endif
                     <div class="form-group">
                         <label>Phone Number  : </label>
-                        <input value="{{Auth::user()->company->phone}}" type="number" class="from-control" name="phonenumber">    
+                        <input value="{{Auth::user()->company->phone}}" type="number" class="form-control p_input" name="phonenumber">    
                     </div>
                     @if($errors->has('phone_number'))
                             <div class="error" style="color:red">
@@ -55,7 +55,7 @@
                         @endif
                     <div class="form-group">
                         <label>Website    : </label>
-                        <textarea class="from-control" rows="3" name="website">{{Auth::user()->company->website}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="website">{{Auth::user()->company->website}}</textarea>    
                     </div>
                     @if($errors->has('website'))
                             <div class="error" style="color:red">
@@ -64,7 +64,7 @@
                         @endif
                     <div class="form-group">
                         <label>Slogan       : </label>
-                        <textarea class="from-control" rows="3" name="bio">{{Auth::user()->company->slogan}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="slogan">{{Auth::user()->company->slogan}}</textarea>    
                     </div>
                     @if($errors->has('slogan'))
                             <div class="error" style="color:red">
@@ -73,7 +73,7 @@
                     @endif
                     <div class="form-group">
                         <label>Description       : </label>
-                        <textarea class="from-control" rows="3" name="bio">{{Auth::user()->company->description}}</textarea>    
+                        <textarea class="form-control p_input" rows="3" name="description">{{Auth::user()->company->description}}</textarea>    
                     </div>
                     @if($errors->has('description'))
                             <div class="error" style="color:red">

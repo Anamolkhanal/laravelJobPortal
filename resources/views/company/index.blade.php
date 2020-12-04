@@ -6,13 +6,13 @@
                 <img src="{{asset('cover/banner.png')}}" width="100%">
             </div>
             <div class="company-desc"><br>
-            @if(empty(Auth::user()->profile->avatar))
+            @if(empty($company->logo))
                 <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
-                width="100" height="200">
+                width="100" height="100">
             @else
                 <img style="boarder-radius: 50px" 
-                src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
-                width="100" height="200">
+                src="{{asset('uploads/avatar')}}/{{$company->logo}}" 
+                width="100" height="100">
             @endif
             <h1>{{$company->cname}}</h1>
             <p>{{$company->description}}</p>
@@ -33,13 +33,13 @@
             @foreach($company->jobs as $job)
                 <tr>
                     <td>
-                        @if(empty(Auth::user()->profile->avatar))
+                        @if(empty($job->company->logo))
                             <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
-                            width="100" height="200">
+                            width="100" height="100">
                         @else
                             <img style="boarder-radius: 50px" 
-                            src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
-                            width="100" height="200">
+                            src="{{asset('uploads/avatar')}}/{{$job->company->logo}}" 
+                            width="100" height="100">
                         @endif
                     </td>
                     <td>
@@ -49,9 +49,11 @@
                     <td>{{$job->address}}</td>
                     <td>{{$job->created_at->diffForHumans()}}</td>
                     <td>
+                    @if(Auth::user()->user_type=="seeker")
                     <a href="{{route('jobs.show',[$job->id,$job->roles])}}">
-                        <button class ="btn btn-success btn-sm">Apply</button>
-                    </a>  
+                        <button class ="btn btn-success btn-sm">View More</button>
+                    </a>
+                    @endif 
                     </td>
                 </tr>
             @endforeach

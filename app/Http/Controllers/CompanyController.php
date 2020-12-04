@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
 
 class CompanyController extends Controller
 {
@@ -11,6 +12,14 @@ class CompanyController extends Controller
     public function index($id,Company $company){
         return view('company.index',compact('company')); 
     }
+
+    public function page($id,Company $company){
+        return view('company.index',compact('company')); 
+    }
+    public function applicant(){
+        return view('company.seeker');
+    }
+
     public function profile(){
         return view('company.profile');
     }
@@ -23,7 +32,7 @@ class CompanyController extends Controller
             'phone'=>request('phonenumber'),
             'website'=>request('website'),
             'slogan'=>request('slogan'),
-            'descripion'=>request('description'),
+            'description'=>request('description'),
         ]);
         return redirect()->back()->
         with('message','Company Profile Update SuccessFully');
@@ -52,7 +61,7 @@ class CompanyController extends Controller
           $fileName=time().'.'.$text;
           $file->move('uploads/avatar',$fileName);
 
-        Profile::where('user_id',$user_id)->update(['logo'=>$fileName]);
+        Company::where('user_id',$user_id)->update(['logo'=>$fileName]);
         return redirect()->back()->
         with('message','Company Logo Update SuccessFully'); 
       }
@@ -61,6 +70,4 @@ class CompanyController extends Controller
     public function dashboard(){
         return view('company.dashboard');
     }
-
 }
- 

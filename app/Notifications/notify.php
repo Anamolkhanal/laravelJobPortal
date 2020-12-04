@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 
 class notify extends Notification
 {
-    public $job_title, $seeker_name;
+    public $job_title, $seeker_name, $notification_type;
     use Queueable;
     
     /**
@@ -17,10 +17,11 @@ class notify extends Notification
      *
      * @return void
      */
-    public function __construct($job_title,$seeker_name)
+    public function __construct($job_title,$seeker_name,$notification_type)
     {
         $this->job_title = $job_title;
-        $this->seeker_name =$seeker_name; 
+        $this->seeker_name =$seeker_name;
+        $this->notification_type=$notification_type; 
     }
 
     /**
@@ -59,9 +60,17 @@ class notify extends Notification
         
         $job_title=$this->job_title;
         $seeker_name=$this->seeker_name; 
+        $notification_type=$this->notification_type;
+        if($notification_type=="apply"){
         return [
-            'data'=>$seeker_name." applied for the ".$job_title,
+            'data'=>$seeker_name." applied for ".$job_title,
         ];
+        }
+        else{
+            return [
+                'data'=>$seeker_name." cancel application for ".$job_title,
+            ];
+        }
     }
 }
 

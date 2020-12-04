@@ -12,8 +12,20 @@ use App\Models\Profile;
 
 class JobController extends Controller
 {
-    public function index(){
-        $jobs =Job::latest('created_at')->paginate(7);
+    public function index(Request $req){
+        $input = $req->all();
+        $query = Job::query();
+
+        if(array_key_exists('location',$input)){ 
+            $query = $query->where('address',$input['location']);
+        }
+        // if(array_key_exists('category',$input)){ 
+        //     $query = $query->where('category',"%{$input['location']}%");
+        // }
+        if(array_key_exists('attribute',$input)){
+            $query = $query->orWhere('title',$input['attribute'])->orWhere('position',$input['attribute'])->orWhere('type',$input['attribute']);
+        }
+        $jobs = $query->latest()->paginate(10);
         return view('welcome',compact('jobs'));
     }
 
@@ -74,8 +86,9 @@ class JobController extends Controller
         $seeker_name=$seeker['name'];
         $job=Job::find($req->job);
         $job_title=$job['title'];
+        $notification_type="apply";
     
-        User::find($company_id)->notify(new notify($job_title,$seeker_name));
+        User::find($company_id)->notify(new notify($job_title,$seeker_name,$notification_type));
         Auth::user()->jobs()->attach($req->job);
 
            return redirect()->back()
@@ -88,14 +101,16 @@ class JobController extends Controller
         $seeker_name=$seeker['name'];
         $job=Job::find($req->job);
         $job_title=$job['title'];
+        $notification_type="cancel";
     
-        User::find($company_id)->notify(new notify($job_title,$seeker_name));
+        User::find($company_id)->notify(new notify($job_title,$seeker_name,$notification_type));
         Auth::user()->jobs()->detach($req->job);
 
            return redirect()->back()
             ->with('message','You have Successfully Cancel Your Application.');
 
     }
+  
 
 }
 

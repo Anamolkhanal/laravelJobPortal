@@ -179,17 +179,20 @@
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
-                                     class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                                <span class="hidden-xs">Hello ! {{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
-                                         class="img-circle" alt="User Image"/>
+                                    @if(empty(Auth::user()->company->logo))
+                                        <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
+                                        width="100" height="100">
+                                    @else
+                                        <img style="boarder-radius: 50px" 
+                                        src="{{asset('uploads/avatar')}}/{{Auth::user()->company->logo}}" 
+                                        width="100" height="100">
+                                    @endif
                                     <p>
                                         {{ Auth::user()->name }}
                                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>

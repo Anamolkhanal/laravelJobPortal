@@ -6,8 +6,14 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" class="img-circle"
-                     alt="User Image"/>
+                @if(empty(Auth::user()->company->logo))
+                    <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
+                    width="100" height="100">
+                @else
+                    <img style="boarder-radius: 50px" 
+                    src="{{asset('uploads/avatar')}}/{{Auth::user()->company->logo}}" 
+                    width="100" height="100">
+                @endif
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
@@ -20,16 +26,7 @@
             </div>
         </div>
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-          <span class="input-group-btn">
-            <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-            </div>
-        </form>
+       
         <!-- Sidebar Menu -->
 
         <ul class="sidebar-menu" data-widget="tree">

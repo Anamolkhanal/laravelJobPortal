@@ -5,6 +5,8 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\Job;
 
 class CompanyController extends Controller
 {
@@ -16,8 +18,12 @@ class CompanyController extends Controller
     public function page($id,Company $company){
         return view('company.index',compact('company')); 
     }
-    public function applicant(){
-        return view('company.seeker');
+    public function application(){
+       
+        $company_id=Auth::user()->company->id;
+        $jobs=Job::query()->Where('company_id',$company_id);
+        dd($jobs);
+        return view('company/application',compact('jobs'));
     }
 
     public function profile(){
@@ -70,4 +76,6 @@ class CompanyController extends Controller
     public function dashboard(){
         return view('company.dashboard');
     }
+
+   
 }

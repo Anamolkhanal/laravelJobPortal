@@ -1,14 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Job;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Storage;
 
+
 class UserProfileController extends Controller
 {
+    public function myapplication(){
+        $user_id=Auth::user()->id;    
+        $user = User::find($user_id);
+        return view('profiles/myapplication',compact('user'));
+    }
+
     public function index(){
         return view('profiles.index');
     }
@@ -74,4 +82,6 @@ class UserProfileController extends Controller
       }
              
     }
+    
+  
 }

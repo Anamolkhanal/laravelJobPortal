@@ -172,7 +172,7 @@
                                    <a href="#">{{$notification->data['data']}}</a>
                                 </li>
                                 @endforeach
-                                <li><a style="color: red" href="#">Delete All Notification</a></li>
+                            <li><a style="color: red" href="{{route('notificationdelete')}}">Delete All Notification</a></li>
                             </ul> 
                         </li>
                         <!-- User Account Menu -->
@@ -254,7 +254,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Recent jobs</a></li>
                     <li><a href="{{ route('profile') }}">Profile</a></li>
-                    <li><a href="#">My Application</a></li>
+                    <li><a href="{{route('myapplication')}}">My Application</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

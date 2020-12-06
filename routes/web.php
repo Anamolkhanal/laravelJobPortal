@@ -24,13 +24,17 @@ Route::get('/jobs/apply',[JobController::class,'apply'])->name('jobs.apply');
 Route::get('/jobs/cancel',[JobController::class,'cancel'])->name('jobs.cancel');
 
 
-Route::get('/company/notify/applicant',[CompanyController::class,'applicant'])->name('company.applicant');
+Route::get('/company/application',[CompanyController::class,'application'])->name('company.application');
 Route::get('/company/{id}/{company}',[CompanyController::class,'index'])->name('company.index');
 
 Route::get('maskAsRead',function(){
     Auth::user()->unreadNotifications->markAsRead();
     return redirect()->back();
 })->name('markRead');
+Route::get('notificationdelete',function(){
+    Auth::user()->Notifications->clear();
+    return redirect()->back();
+})->name('notificationdelete');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
@@ -47,11 +51,13 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
+Route::get('profile/myapplication',[UserProfileController::class,'myapplication'])->name('myapplication');
 Route::get('user/profile',[UserProfileController::class,'index'])->name('profile');
 Route::post('profile/store',[UserProfileController::class,'store'])->name('profile.store');
 Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])->name('profile.coverletter');
 Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
+
 
 Route::get('company/profile',[CompanyController::class,'profile'])->name('company.profile');
 Route::post('company/store',[CompanyController::class,'store'])->name('company.store');

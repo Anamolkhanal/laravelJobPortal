@@ -9,6 +9,9 @@ class Job extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function profile(){
+        return $this->belongsTo('App\Models\profile');
+    }
     public function company(){
         return $this->belongsTo('App\Models\Company');
     }
@@ -19,5 +22,6 @@ class Job extends Model
     {
         return 'roles';
     }
+  
     
 }

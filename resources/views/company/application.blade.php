@@ -15,8 +15,8 @@
         <tbody>
         @foreach($jobs->id as $temp)
             @php
-            $profile=App\Models\Profile::find($temp->pivot->user_id);
-            $job=App\Models\Job::find($temp->pivot->job_id);
+                $profile=App\Models\Profile::find($temp->pivot->user_id);
+                $job=App\Models\Job::find($temp->pivot->job_id);
             @endphp
             <tr>
                 <td>

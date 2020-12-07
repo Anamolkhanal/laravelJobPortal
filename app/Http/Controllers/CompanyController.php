@@ -21,8 +21,7 @@ class CompanyController extends Controller
     public function application(){
        
         $company_id=Auth::user()->company->id;
-        $jobs=Job::query()->Where('company_id',$company_id);
-        dd($jobs);
+        // $jobs=Job::query()->Where('company_id',$company_id);
         return view('company/application',compact('jobs'));
     }
 

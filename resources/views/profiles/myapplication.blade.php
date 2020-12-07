@@ -13,8 +13,7 @@
         <th></th>
         </thead>
         <tbody>
-            {{dd($jobs)}}
-        @foreach($jobs as $temp)
+        @foreach($user->jobs as $temp)
             @php
             $job=App\Models\Job::find($temp->pivot->job_id);
             @endphp

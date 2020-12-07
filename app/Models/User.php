@@ -52,5 +52,8 @@ class User extends Authenticatable
     public function jobs(){
         return $this->belongsToMany('App\Models\Job')->withPivot('job_id'); 
     }
-    
+    public function messages()
+{
+  return $this->hasMany(Message::class);
+}
 }

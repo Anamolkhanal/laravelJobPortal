@@ -12,8 +12,9 @@ use App\Http\Controllers\Storage;
 class UserProfileController extends Controller
 {
     public function myapplication(){
-        $user_id=Auth::user()->id;    
-        $user = User::find($user_id);
+        // $user_id=Auth::user()->id;    
+        // $user = User::find($user_id);
+        $user=Auth::user();
         return view('profiles/myapplication',compact('user'));
     }
 

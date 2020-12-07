@@ -13,10 +13,13 @@
         <th></th>
         </thead>
         <tbody>
-        @foreach($jobs->id as $temp)
+        @foreach($jobs as $job)
             @php
-                $profile=App\Models\Profile::find($temp->pivot->user_id);
-                $job=App\Models\Job::find($temp->pivot->job_id);
+                $user = $job->user->find($job->id);
+                // $target->pivot->type
+                dd($user);
+                $profile=App\Models\Profile::find($user->pivot->user_id);
+                
             @endphp
             <tr>
                 <td>
@@ -48,8 +51,5 @@
     </table>
     </div>
 </div>
-{{-- <span>
-    {{$job->links()}}
-</span> --}}
 @endsection
 

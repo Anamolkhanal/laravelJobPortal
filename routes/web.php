@@ -66,3 +66,10 @@ Route::post('company/logo',[CompanyController::class,'logo'])->name('company.log
 
 Route::get('/logout', [LoginController::class,'logout'])->name('logout'); 
 
+Route::get('messages', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
+
+Broadcast::channel('chat', function ($user) {
+    return Auth::check();
+  });

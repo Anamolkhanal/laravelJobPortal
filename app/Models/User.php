@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Job')->withPivot('job_id'); 
     }
     public function messages()
-{
-  return $this->hasMany(Message::class);
-}
+    {
+        return $this->hasMany(Message::class);
+    }
 }

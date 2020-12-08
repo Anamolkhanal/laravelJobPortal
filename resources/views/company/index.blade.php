@@ -3,7 +3,14 @@
     <div class="container">
         <div class="row">
             <div class="company-profile">
-                <img src="{{asset('cover/banner.png')}}" width="100%">
+            @if(empty($company->cover_photo))
+                <img src="{{asset('avatar/banner.png')}}" 
+                width="100%" >
+            @else
+                <img src="{{asset('uploads/avatar')}}/{{$company->cover_photo}}" 
+                width="100%">
+              
+            @endif
             </div>
             <div class="company-desc"><br>
             @if(empty($company->logo))
@@ -13,6 +20,7 @@
                 <img style="boarder-radius: 50px" 
                 src="{{asset('uploads/avatar')}}/{{$company->logo}}" 
                 width="100" height="100">
+               
             @endif
             <h1>{{$company->cname}}</h1>
             <p>{{$company->description}}</p>

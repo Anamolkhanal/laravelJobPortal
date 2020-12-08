@@ -291,6 +291,7 @@
                     <li><a href="{{ url('/') }}">Recent jobs</a></li>
                     <li><a href="{{ route('profile') }}">Profile</a></li>
                     <li><a href="{{route('myapplication')}}">My Application</a></li>
+                <li><a href="{{route('messages.chat')}}">Message</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -46,15 +46,22 @@ class CompanyController extends Controller
 
     public function coverphoto(Request $request){
         $this->validate($request,[
-            'cover_photo'=>'required|mimes:jpg,png,jpeg|max:1024',
+            'cover_photo'=>'required|mimes:jpg,png,jpeg',
             ]);
         $user_id=Auth::user()->id;
-      $cover = $request->file('cover_photo')->store('public/files');
+        if($request->hasFile('cover_photo')){
+            $file=$request->file('cover_photo');
+            $text=$file->getClientOriginalExtension();
+            $fileName=time().'.'.$text;
+            $file->move('uploads/avatar',$fileName);
+        
+    //   $cover = $request->file('cover_photo')->move('uploads/avatar');
 
-      Company::where('user_id',$user_id)->update(['cover_photo'=>$cover]);
+      Company::where('user_id',$user_id)->update(['cover_photo'=>$fileName]);
       return redirect()->back()->
       with('message','Cover Photo udpadted SuccessFully');        
     }
+}
    
     public function logo(Request $request){
         $this->validate($request,[

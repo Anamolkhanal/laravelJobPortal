@@ -11,6 +11,6 @@
         <a href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->cname])}}"><i class="fa fa-post-o"></i><span>Company Page</span></a>
 </li>
 <li >
-        <a href="#"><i class="fa fa-post-o"></i><span>Message</span></a>
+        <a href="{{route('messages.chat')}}"><i class="fa fa-post-o"></i><span>Message</span></a>
 </li>
 <!-- {{ Request::is('news*') ? 'active' : '' }} -->

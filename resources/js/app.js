@@ -1,6 +1,6 @@
 require('./bootstrap');
-Vue.component('chat-messages', require('./components/ChatMessages.vue'));
-Vue.component('chat-form', require('./components/ChatForm.vue'));
+Vue.component('chat-messages', require(' ./resources/js/components/ChatMessages.vue'));
+Vue.component('chat-form', require(' ./resources/js/components/ChatForm.vue'));
 
 const app = new Vue({
     el: '#app',

@@ -67,7 +67,7 @@ Route::post('company/logo',[CompanyController::class,'logo'])->name('company.log
 
 Route::get('/logout', [LoginController::class,'logout'])->name('logout'); 
 
-Route::get('messages/chat', [ChatsController::class, 'index'])->name('messages.chat');
-Route::get('messages', [ChatsController::class,'fetchMessages']);
-Route::post('messages',[ChatsController::class,'sendMessage']);
-
+Route::get('messages', [ChatsController::class, 'index'])->name('messages.chat');
+Route::get('/message/{id}',[ChatsController::class, 'getMessage'])->name('message');
+Route::post('message',[ChatsController::class, 'sendMessage']);
+// Route::get('/home', [ChatsController::class, 'index'])->name('home');

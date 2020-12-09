@@ -15,9 +15,10 @@ class Job extends Model
     public function company(){
         return $this->belongsTo('App\Models\Company');
     }
-    public function user(){
+    public function users(){
         return $this->belongsToMany('App\Models\User')->WithPivot('user_id');
     }
+    
     public function getRouteKeyName()
     {
         return 'roles';

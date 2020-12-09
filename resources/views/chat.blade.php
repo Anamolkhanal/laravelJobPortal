@@ -27,9 +27,7 @@
                             @endif
 
                             <div class="media">
-                                <div class="media-left">
-                                    <img src="{{ $user->avatar }}" alt="" class="media-object">
-                                </div>
+                               
 
                                 <div class="media-body">
                                     <p class="name">{{ $user->name }}</p>

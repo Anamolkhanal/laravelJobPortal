@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\Job;
+use App\Models\JobUser;
 
 class CompanyController extends Controller
 {
@@ -22,10 +23,15 @@ class CompanyController extends Controller
        
         $company_id=Auth::user()->company->id;
         $query = Job::all();
-        $jobs=$query->where('company_id',$company_id);
-        return view('company/application',compact('jobs'));
+        $jobs=$query->where('company_id',$company_id)->pluck('id');
+        $appliedJobs = JobUser::whereIn('job_id',$jobs)->get();
+        return view('company/application',compact('appliedJobs'));
     }
-
+    public function seeker($job_id,$user_id){
+        $user=User::find($user_id);
+        $job=Job::find($job_id);
+        return view('company.seeker',compact('job','user'));
+    }
     public function profile(){
         return view('company.profile');
     }

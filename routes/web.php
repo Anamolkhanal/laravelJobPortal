@@ -8,6 +8,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Notifications\notify;
@@ -59,15 +60,18 @@ Route::post('profile/coverletter',[UserProfileController::class,'coverletter'])-
 Route::post('profile/resume',[UserProfileController::class,'resume'])->name('profile.resume');
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
 
-
+Route::get('company/seeker/{job_id}/{user_id}',[CompanyController::class,'seeker'])->name('company.seeker');
 Route::get('company/profile',[CompanyController::class,'profile'])->name('company.profile');
 Route::post('company/store',[CompanyController::class,'store'])->name('company.store');
 Route::post('company/coverphoto',[CompanyController::class,'coverphoto'])->name('company.coverphoto');
 Route::post('company/logo',[CompanyController::class,'logo'])->name('company.logo');
 
+
 Route::get('/logout', [LoginController::class,'logout'])->name('logout'); 
 
 Route::get('messages', [ChatsController::class, 'index'])->name('messages.chat');
 Route::get('/message/{id}',[ChatsController::class, 'getMessage'])->name('message');
-Route::post('message',[ChatsController::class, 'sendMessage']);
+Route::get('message',[ChatsController::class, 'sendMessage']);
 // Route::get('/home', [ChatsController::class, 'index'])->name('home');
+
+Route::get('/sendmail/{user_id}',[MailController::class,'sendAcceptEmail'])->name('sendemail');

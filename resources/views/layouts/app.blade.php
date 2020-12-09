@@ -509,7 +509,7 @@
                     $(this).val(''); // while pressed enter text box will be empty
                     var datastr = "receiver_id=" + receiver_id + "&message=" + message;
                     $.ajax({
-                        type: "post",
+                        type: "get",
                         url: "message", // need to create this post route
                         data: datastr,
                         cache: false,

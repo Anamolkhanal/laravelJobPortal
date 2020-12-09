@@ -13,27 +13,24 @@
         <th></th>
         </thead>
         <tbody>
-        @foreach($jobs as $job)
-            @php
-                $user = $job->user->find($job->id);
-                // $target->pivot->type
-                dd($user);
-                $profile=App\Models\Profile::find($user->pivot->user_id);
-                
+        @foreach($appliedJobs as $item)
+            @php 
+                $user=App\Models\User::find($item->user_id);
+                $job=App\Models\Job::find($item->job_id);
             @endphp
             <tr>
                 <td>
-                    @if(empty($profile->avatar))
+                    @if(empty($user->profile->avatar))
                         <img style="boarder-radius: 50px" src="{{asset('avatar/apple.png')}}" 
                         width="100" height="100">
                     @else
                         <img style="boarder-radius: 50px" 
-                        src="{{asset('uploads/avatar')}}/{{$profile->avatar}}" 
+                        src="{{asset('uploads/avatar')}}/{{$user->profile->avatar}}" 
                         width="100" height="100">
                     @endif
                 </td>
                 <td>
-                    {{$profile->name}}
+                    {{$user->name}}
                 </td>
                 <td>
                     {{$job->title}}
@@ -41,7 +38,7 @@
                 </td>
                 <td>{{$job->created_at->diffForHumans()}}</td>
                 <td>
-                <a href="{{route('jobs.show',[$job->id,$job->roles])}}">
+                <a href="{{route('company.seeker',[$job->id,$user->id])}}">
                     <button class ="btn btn-success btn-sm">View Profile</button>
                 </a>  
                 </td>

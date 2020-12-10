@@ -88,8 +88,7 @@ class RegisterController extends Controller
                 ]); 
            
             }
-        
-            return redirect()->route('welcome');
+        return redirect()->route('welcome');
     }
 
 }

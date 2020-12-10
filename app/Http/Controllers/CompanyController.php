@@ -11,7 +11,6 @@ use App\Models\JobUser;
 
 class CompanyController extends Controller
 {
-    //
     public function index($id,Company $company){
         return view('company.index',compact('company')); 
     }
@@ -60,8 +59,6 @@ class CompanyController extends Controller
             $text=$file->getClientOriginalExtension();
             $fileName=time().'.'.$text;
             $file->move('uploads/avatar',$fileName);
-        
-    //   $cover = $request->file('cover_photo')->move('uploads/avatar');
 
       Company::where('user_id',$user_id)->update(['cover_photo'=>$fileName]);
       return redirect()->back()->

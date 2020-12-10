@@ -50,7 +50,7 @@ class JobController extends Controller
         return view('jobs.create');
     }
     public function store(){
- 
+        
         $user_id=Auth::user()->id;
         $company=Company::Where('user_id',$user_id)->first();
         $company_id=$company->id;

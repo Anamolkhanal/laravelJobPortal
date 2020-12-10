@@ -61,6 +61,7 @@ Route::post('profile/resume',[UserProfileController::class,'resume'])->name('pro
 Route::post('profile/avatar',[UserProfileController::class,'avatar'])->name('profile.avatar');
 
 Route::get('company/seeker/{job_id}/{user_id}',[CompanyController::class,'seeker'])->name('company.seeker');
+
 Route::get('company/profile',[CompanyController::class,'profile'])->name('company.profile');
 Route::post('company/store',[CompanyController::class,'store'])->name('company.store');
 Route::post('company/coverphoto',[CompanyController::class,'coverphoto'])->name('company.coverphoto');
@@ -74,4 +75,4 @@ Route::get('/message/{id}',[ChatsController::class, 'getMessage'])->name('messag
 Route::get('message',[ChatsController::class, 'sendMessage']);
 // Route::get('/home', [ChatsController::class, 'index'])->name('home');
 
-Route::get('/sendmail/{user_id}',[MailController::class,'sendAcceptEmail'])->name('sendemail');
+Route::get('/sendmail/{user_id}/{job_id}/{type}',[MailController::class,'index'])->name('sendemail');

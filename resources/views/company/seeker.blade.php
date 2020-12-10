@@ -3,8 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+         
+        @if(Session::has('message'))
+        <div class="alert alert-success">
+            {{Session::get('message')}}
+        </div>
+    @endif
         <div class="col-md-3">
             <div class="card">
+                
                 <div class ="card-header">
                     {{$job->title}}
                 </div>
@@ -51,9 +58,21 @@
                         <p>Resume is not available</p>
                     @endif
                 </div>
+                {{-- @if ($temp == "accept")
+                <a href="" class ="btn btn-success">
+                    Already Accepted
+                </a>
+                @elseif ($temp == "reject")
+                <a href="" class ="btn btn-success">
+                    Already Rejected
+                </a>
+                @else
+                    <a href="{{route('sendemail',[$user->id,$job->id,"accept"])}}" class="btn btn-success">Accept </a>
+                    <a href="{{route('sendemail',[$user->id,$job->id,"reject"])}}" class="btn btn-danger">Reject</a>
+                @endif   --}}
 
-            <a href="{{route('sendemail',[$user->id])}}" class="btn btn-success">Accept </a>
-                <a href="#" class="btn btn-danger">Decline</a>
+            <a href="{{route('sendemail',[$user->id,$job->id,"accept"])}}" class="btn btn-success">Accept </a>
+            <a href="{{route('sendemail',[$user->id,$job->id,"reject"])}}" class="btn btn-danger">Reject</a>
             </div>
         </div>
     </div>

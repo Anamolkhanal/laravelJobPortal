@@ -18,7 +18,9 @@ class SendMail extends Mailable
      */
     public function __construct($details)
     {
-        $this->$details = $details;
+        
+        $this->details = $details;
+        // dd($details);
     }
 
     /**
@@ -28,6 +30,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Mail')->view('testmail');
+        return $this->subject('Job Application')->view('testmail');
     }
 }

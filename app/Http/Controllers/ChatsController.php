@@ -29,21 +29,24 @@ class ChatsController extends Controller
      */
     public function index()
     {
-        // select all users except logged in user
-        //$users = User::where('id', '!=', Auth::id())->get();
-
-        // count how many message are unread from the selected user
-        // $users = DB::select("select users.id, users.name, users.avatar, users.email, count(is_read) as unread 
-        // from users LEFT  JOIN  messages ON users.id = messages.from and is_read = 0 and messages.to = " . Auth::id() . "
-        // where users.id != " . Auth::id() . " 
-        // group by users.id, users.name, users.avatar, users.email");
-
-        // $users=User::leftJoin('messages','messages.user_id','=',Auth::id())->select("users.id, users.name, users.email, count(is_read)")->get();
-        
-        $users = DB::select("select users.id, users.name, users.email, count(is_read) as unread 
-        from users LEFT  JOIN  messages ON users.id = messages.from and is_read = 0 and messages.to = " . Auth::id() . "
-        where users.id != " . Auth::id() . " 
-        group by users.id, users.name, users.email");
+       
+        $user=Auth::User();
+        if($user->user_type=="employer"){
+            $users = DB::select("select users.id, users.name, users.email, count(is_read) as unread 
+            from users LEFT  JOIN  messages ON users.id = messages.from and is_read = 0 and messages.to = " . Auth::id() . "
+            where users.id != " . Auth::id() . " && user_type = 'seeker'
+            group by users.id, users.name, users.email");
+        }
+        elseif($user->user_type=="seeker"){
+            $users = DB::select("select users.id, users.name, users.email, count(is_read) as unread 
+            from users LEFT  JOIN  messages ON users.id = messages.from and is_read = 0 and messages.to = " . Auth::id() . "
+            where users.id != " . Auth::id() . " && user_type = 'employer'
+            group by users.id, users.name, users.email");
+        }
+        else{
+             // select all users except logged in user
+            $users = User::where('id', '!=', Auth::id())->get();
+        }
 
 
         return view('chat', ['users' => $users]);
@@ -96,48 +99,5 @@ class ChatsController extends Controller
         $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
         $pusher->trigger('my-channel', 'my-event', $data);
     }
-      //
-  // public function __construct()
-  //   {
-  //     $this->middleware('auth');
-  //   }
-
-  // /**
-  //  * Show chats
-  //  *
-  //  * @return \Illuminate\Http\Response
-  //  */
-  // public function index()
-  //   {
-  //     return view('chat');
-  //   }
-
-  // /**
-  //  * Fetch all messages
-  //  *
-  //  * @return Message
-  //  */
-  // public function fetchMessages()
-  //   {
-  //     return Message::with('user')->get();
-  //   }
-
-  // /**
-  //  * Persist message to database
-  //  *
-  //  * @param  Request $request
-  //  * @return Response
-  //  */
-  // public function sendMessage(Request $request)
-  //   {
-  //     $user = Auth::user();
-
-  //     $message = $user->messages()->create([
-  //       'message' => $request->input('message')
-  //     ]);
-
-  //     broadcast(new MessageSent($user, $message))->toOthers();
-
-  //     return ['status' => 'Message Sent!'];
-  //   }
+ 
 }

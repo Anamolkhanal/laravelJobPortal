@@ -71,6 +71,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'user_type'=>$data['user_type'],
         ]);
+        \App\Models\Profile::Create([
+                 'user_id'=>$user->id
+                 ]); 
         if($data['user_type']=='seeker')
         {
             // dd($data['user_type']);//data have passed upto here.

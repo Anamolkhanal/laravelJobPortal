@@ -86,7 +86,7 @@
                     </span>
                 @endif
             </div>
-                <div class="form-group">
+            <div class="form-group">
                 <label>User Type : </label>
                 <input type="radio" value="seeker" name="user_type">Job Seeker
                 <input type="radio" value="employer" name="user_type">Employer

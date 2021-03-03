@@ -25,7 +25,7 @@ class JobController extends Controller
         if(array_key_exists('attribute',$input)){
             $query = $query->orWhere('title',$input['attribute'])->orWhere('position',$input['attribute'])->orWhere('type',$input['attribute']);
         }
-        $jobs = $query->latest()->paginate(10);
+        $jobs = $query->latest()->paginate(4);
         return view('welcome',compact('jobs'));
     }
 

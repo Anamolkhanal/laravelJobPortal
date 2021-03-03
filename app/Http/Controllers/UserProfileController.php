@@ -50,21 +50,44 @@ class UserProfileController extends Controller
             'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000',
             ]);
         $user_id=Auth::user()->id;
-      $cover = $request->file('cover_letter')->store('public/files');
+      $cover = $request->file('cover_letter')->store('app\public\files');
       //dd($cover);
       Profile::where('user_id',$user_id)->update(['cover_letter'=>$cover]);
       return redirect()->back()->
       with('message','Cover Letter Profile Update SuccessFully');        
     }
     public function resume(Request $request){
-        $this->validate($request,[
-            'resume'=>'required|mimes:pdf,doc,docx|max:20000',
-            ]);
-        $user_id=Auth::user()->id;
-      $resume = $request->file('resume')->store('public/files');
-      Profile::where('user_id',$user_id)->update(['resume'=>$resume]);
-      return redirect()->back()->
-      with('message','Resume Profile Update SuccessFully');        
+    //     $this->validate($request,[
+    //         'resume'=>'required|mimes:pdf,doc,docx|max:20000',
+    //         ]);
+    //     $user_id=Auth::user()->id;
+    //     if($request->hasFile('resume')){
+    //         $file=$request->file('resume');
+    //         $text=$file->getClientOriginalExtension();
+    //         $fileName=time().'.'.$text;
+    //         $file->move('resume',$fileName);
+
+    // //   $resume = $request->file('resume')->store('public/files');
+    //   Profile::where('user_id',$user_id)->update(['resume'=>$fileName]);
+    //   return redirect()->back()->
+    //   with('message','Resume Profile Update SuccessFully');        
+    //     }
+        $validatedData = $request->validate([
+            'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+    
+           ]);
+    
+           $name = $request->file('file')->getClientOriginalName();
+    
+           $path = $request->file('file')->store('public/files');
+           $user_id=Auth::user()->id;
+           Profile::where('user_id',$user_id)->update(['resume'=>$path]);
+           $save = new File;
+    
+           $save->name = $name;
+           $save->path = $path;
+    
+           return redirect('file-upload')->with('status', 'Resume Profile Update SuccessFully');
     }
     public function avatar(Request $request){
         $this->validate($request,[
@@ -82,6 +105,13 @@ class UserProfileController extends Controller
         with('message','Profile Picture Update SuccessFully'); 
       }
              
+    }
+    public function download_resume(){
+        $filePath = public_path("dummy.pdf");
+    	$headers = ['Content-Type: application/pdf'];
+    	$fileName = time().'.pdf';
+
+    	return response()->download($filePath, $fileName, $headers);
     }
     
   

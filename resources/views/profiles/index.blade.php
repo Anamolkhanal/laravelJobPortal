@@ -119,6 +119,7 @@
                     <p><b>Memeber Since:{{date('F d Y',strtotime(Auth::user()->profile->created_at))}}</b></p>
                     @if(!empty(Auth::user()->profile->cover_letter))
                         <p>
+                            
                             <a href="{{Storage::url(Auth::user()->profile->cover_letter)}}">Cover Letter</a>
                         </p>
                     @else
